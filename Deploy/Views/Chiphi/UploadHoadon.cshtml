@@ -1,0 +1,97 @@
+﻿@model ReportSubmission.Models.UploadHdViewModel
+
+@{
+    ViewBag.Title = "UploadHoadon";
+    Layout = "~/_LayoutHome.cshtml";
+}
+@section title{
+    Upload Hóa đơn
+}
+@section menu{
+
+}
+<article class="post">
+    <header>
+        <div class="title">
+            <h2><a href="#">Upload Hóa đơn</a></h2>
+        </div>
+        <div class="meta">
+            <time class="published" datetime="2017-10-18">October 18, 2017</time>
+            <a href="/Home/userInfo" class="author">
+                @if (Session["user_name]"] != null)
+                {
+                    <span class="name">
+                        @Html.Raw(Session["user_name"].ToString())
+                    </span>
+                }
+                else
+                {
+                    <span class="name">Jane Doe</span>
+                }
+
+                <img src="/images/avatar.jpg" alt="" />
+            </a>
+        </div>
+    </header>
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+
+        <div class="row uniform">
+            <div class="6u$ 12u$(xsmall)">
+
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.kehoachID)
+                </div>
+                <div class="editor-field">
+                    @Html.DropDownList("kehoachID", null, htmlAttributes: new { @class = "form-control" })
+
+                    @Html.ValidationMessageFor(model => model.kehoachID)
+                </div>
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.chiphiID)
+                </div>
+                <div class="editor-field">
+                    @Html.DropDownList("chiphiID", null, htmlAttributes: new { @class = "form-control" })
+
+                    @Html.ValidationMessageFor(model => model.chiphiID)
+                </div>
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.mota)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.mota)
+                    @Html.ValidationMessageFor(model => model.mota)
+                </div>
+               
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.objFile)
+                    </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(model=>model.objFile, new { @type = "file" })
+                    @Html.ValidationMessageFor(model => model.objFile)
+                </div>
+                    @*<input type="file" name="objFile" id="objFile" value="Select the file" />*@
+                    
+                
+
+
+                <p>
+                    <input type="submit" value="Upload"  />
+                </p>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+</article>

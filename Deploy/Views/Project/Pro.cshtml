@@ -1,0 +1,98 @@
+﻿@model IEnumerable<ReportSubmission.Models.ProViewModel>
+
+@{
+    ViewBag.Title = "Pro";
+    Layout = "~/_LayoutHome.cshtml";
+}
+
+@section title {
+    Danh sách dự án tham gia
+    }
+@section menu{
+    }
+
+
+<article class="post">
+    <header>
+        <div class="title">
+            <h2><a href="#">Danh sách dự án đang tham gia</a></h2>
+        </div>
+        <div class="meta">
+            <time class="published" datetime="2017-10-18">October 18, 2017</time>
+            <a href="/Home/userInfo" class="author">
+                @if (Session["user_name]"] != null)
+                {
+                    <span class="name">
+                        @Html.Raw(Session["user_name"].ToString())
+                    </span>
+                }
+                else
+                {
+                    <span class="name">Jane Doe</span>
+                }
+
+                <img src="/images/avatar.jpg" alt="" />
+            </a>
+        </div>
+    </header>
+
+    <table>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TenDA)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NgayBD)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NgayKT)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SoKeHoach)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TongCP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenDA)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NgayBD)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NgayKT)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SoKeHoach)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TongCP)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+                </td>
+            </tr>
+        }
+
+    </table>
+</article>

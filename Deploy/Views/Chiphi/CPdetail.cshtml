@@ -1,0 +1,84 @@
+﻿@model IEnumerable<ReportSubmission.Models.CpViewModel>
+
+@{
+    ViewBag.Title = "CPdetail";
+    Layout = "~/_LayoutHome.cshtml";
+}
+
+@section title {
+    Danh sách chi phí
+    }
+@section menu{
+    }
+
+<article class="post">
+    <header>
+        <div class="title">
+            <h2><a href="#">Danh sách chi phí</a></h2>
+        </div>
+        <div class="meta">
+            <time class="published" datetime="2017-10-18">October 18, 2017</time>
+            <a href="/Home/userInfo" class="author">
+                @if (Session["user_name]"] != null)
+                {
+                    <span class="name">
+                        @Html.Raw(Session["user_name"].ToString())
+                    </span>
+                }
+                else
+                {
+                    <span class="name">Jane Doe</span>
+                }
+
+                <img src="/images/avatar.jpg" alt="" />
+            </a>
+        </div>
+    </header>
+    <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+        <thead>
+            <tr role="row">
+                <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="" style="width:50px;">
+                @Html.DisplayNameFor(model => model.chiphiID)
+                </th>
+                @*<th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="" style="width: 244.016px;">
+                    @Html.DisplayNameFor(model => model.chiphiID)
+                </th>*@
+                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="" style="width: 112.016px;">
+                    @Html.DisplayNameFor(model => model.tien)
+                </th>
+                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="" style="width: 50.0156px;">
+                    @Html.DisplayNameFor(model => model.tenCP)
+                </th>
+                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="" style="width: 89px;">
+                    @Html.DisplayNameFor(model => model.mota)
+                </th>
+            </tr>
+        </thead>
+        
+           
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.chiphiID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.tien)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.tenCP)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.mota)
+                    </td>
+                    @*<td>
+                            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                        </td>*@
+                </tr>
+            }
+
+        </table>
+</article>

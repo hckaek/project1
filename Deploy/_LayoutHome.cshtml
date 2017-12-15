@@ -1,0 +1,211 @@
+﻿<!DOCTYPE html>
+<html>
+<head>    
+    <title>@RenderSection("Title", false)</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link href="~/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="~/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/assets/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/assets/css/main.css" />
+    <style>
+        input, button, select, textarea {
+            -webkit-appearance: none;
+        }
+        .field-validation-error {
+            color:red ;
+            font-style:italic;
+        }
+    </style>
+    <!--[if lte IE 9]><link rel="stylesheet" href="/assets/css/ie9.css" /><![endif]-->
+    <!--[if lte IE 8]><link rel="stylesheet" href="/assets/css/ie8.css" /><![endif]-->
+    
+</head>
+<body>
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+        <!-- Header -->
+        <header id="header">
+            <h1><a href="~/Home">Hệ thống quản lý đi công tác</a></h1>
+            <nav class="links">
+                @{                    
+                    if (Session["user_name"] != null)
+                    {
+                     <ul>
+
+                        
+                       <li> Welcome @Session["user_name"]</li>
+                       <li> <a href="/Home/userInfo" >Thông tin</a></li>
+                       <li><a href="/Home/Logout">Đăng xuất</a></li>
+
+                     </ul>
+                    }
+                    else { 
+                     <ul>
+                       <li><a href="/Home/Login">Đăng nhập</a></li>
+                     </ul>
+                    }  
+                }
+                
+            </nav>
+            <nav class="main">
+                <ul>
+                    <li class="search">
+                        <a class="fa-search" href="#search">Search</a>
+                        <form id="search">
+                            <input type="text" name="query" placeholder="Search" />
+                        </form>
+                    </li>
+                    <li class="menu">
+                        <a class="fa-bars" href="#menu">Menu</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Menu NTT -->
+        @RenderSection("Menu", true)        
+        <!-- End Menu -->
+        <!-- Main -->
+        <div id="main">
+            @RenderBody()
+          
+            <!-- Pagination -->
+            <section id="footer">
+                <ul class="icons">
+                    <li><a href="#" class="fa-twitter"><span class="label">Twitter</span></a></li>
+                    <li><a href="#" class="fa-facebook"><span class="label">Facebook</span></a></li>
+                    <li><a href="#" class="fa-instagram"><span class="label">Instagram</span></a></li>
+                    <li><a href="#" class="fa-rss"><span class="label">RSS</span></a></li>
+                    <li><a href="#" class="fa-envelope"><span class="label">Email</span></a></li>
+                </ul>
+                <p class="copyright">  <br /> Email: 123@gmail.com. SDT: (04) 3.012345678</p>
+            </section>
+
+        </div>
+
+        <!-- Sidebar -->
+        <section id="sidebar">
+
+            <!-- Intro -->
+            <section id="intro">
+                <header>
+                    <h2><font color="red">H</font><font color="green">C</font><font color="blue">K</font>- Company</h2>
+                    <p></p>
+                </header>
+            </section>
+
+            <!-- Left menu NTT -->
+            @*@if (Session["leftMenu"] == null)
+            {*@
+                <section style="width:">
+                    <ul class="posts " id="#menuleft">
+                        <li data-toggle="tooltip" data-placement="right" title="Quản lý dự án">
+                            <div>
+                                <header>
+                                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseProject" data-parent="#menuleft">
+
+                                        <h3>Quản lý dự án</h3>
+                                    </a>
+                                </header>
+                                <ul class="sidenav-second-level collapse" id="collapseProject">
+                                    @if (Session["qldaLeftmenu"] == null)
+                                    {
+                                        <li> Đăng nhập để thực hiện</li>
+                                    }
+                                    else
+                                    {
+                                        @Html.Raw(Session["qldaLeftmenu"].ToString())
+                                    }
+                                </ul>
+
+                            </div>
+                        </li>
+                        <li data-toggle="tooltip" data-placement="right" title="Quản lý kế hoạch">
+                            <div>
+                                <header>
+                                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapsePlan" data-parent="#menuleft">
+
+                                        <h3>Quản lý kế hoạch</h3>
+                                    </a>
+                                </header>
+                                <ul class="sidenav-second-level collapse" id="collapsePlan">
+                                    @if(Session["qlkhLeftmenu"] == null) {
+                                    <li> Đăng nhập để thực hiện</li>
+                                    }
+                                    else{
+                                    @Html.Raw(Session["qlkhLeftmenu"].ToString())
+                                    }
+                                </ul>
+                            </div>
+                        </li>
+                        <li data-toggle="tooltip" data-placement="right" title="Quản lý chi phí">
+                            
+                                <header>
+                                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseChiPhi" data-parent="#menuleft">
+
+                                        <h3>Quản lý chi phí</h3>
+                                    </a>
+                                </header>
+                                <ul class="sidenav-second-level collapse" id="collapseChiPhi">
+                                    @if(Session["qlcpLeftmenu"] == null) {
+                                    <li> Đăng nhập để thực hiện</li>
+                                    }
+                                    else{
+                                    @Html.Raw(Session["qlcpLeftmenu"].ToString())
+                                    }
+                                   
+                                </ul>
+                            
+                        </li>
+                    </ul>
+                </section>    
+            @* } *@
+            @*else
+            {
+                @Html.Raw(Session["leftMenu"].ToString())
+            }*@
+            
+            <!-- About -->
+            <section class="blurb">
+                <h2>About</h2>
+                <p>
+                    Ứng dụng quản lý dự đi công tác và thanh toán công tác phí
+                </p>
+
+            </section>
+
+            <!-- Footer -->
+            <!--
+                <section id="footer">
+                    <ul class="icons">
+                        <li><a href="#" class="fa-twitter"><span class="label">Twitter</span></a></li>
+                        <li><a href="#" class="fa-facebook"><span class="label">Facebook</span></a></li>
+                        <li><a href="#" class="fa-instagram"><span class="label">Instagram</span></a></li>
+                        <li><a href="#" class="fa-rss"><span class="label">RSS</span></a></li>
+                        <li><a href="#" class="fa-envelope"><span class="label">Email</span></a></li>
+                    </ul>
+                    <p class="copyright"> Đài truyền hình việt nam, 43 Nguyễn Chí Thanh, Hà nội, Việt nam</p>
+                </section>
+            -->
+        </section>
+
+    </div>
+   
+    <!-- Scripts -->
+    
+    <script src="~/Scripts/jquery.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/respond.min.js"></script>
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <script src="~/Scripts/skel.min.js"></script>
+    <script src="~/Scripts/util.js"></script>
+    <script src="~/Scripts/main.js"></script>
+    <script src="~/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+
+</body>
+</html>

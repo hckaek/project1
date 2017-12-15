@@ -1,0 +1,83 @@
+﻿@model ReportSubmission.Models.LoginParam
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/_LayoutHome.cshtml";
+}
+
+@section Title{
+    Loging to system
+}
+
+@section Menu{
+    <section id="menu">
+
+        <section>
+            <input type="text" name="query" placeholder="Search" />
+        </section>
+
+        <section>
+            <ul class="links">
+                <li>
+                    <a href="#">
+                        <h3>Lập kế hoạch</h3>
+                        <p>Đăng nhập để thực hiện</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <h3>Thanh toán công tác phí</h3>
+                        <p>Đăng nhập để thực hiện</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <h3></h3>
+                        <p>Đăng nhập để thực hiện</p>
+                    </a>
+                </li>
+            </ul>
+        </section>
+    </section>
+}
+<!-- Post -->
+<article class="post">
+    <header>
+        <div class="title">
+            <h2><a href="#">Login</a></h2>
+            <p>Đăng nhập hệ thống</p>
+        </div>
+        @*<div class="meta">
+            <time class="published" datetime="2017-10-18">October 18, 2017</time>
+            <a href="#" class="author"><span class="name">Jane Doe</span><img src="/images/avatar.jpg" alt="" /></a>
+        </div>*@
+    </header>
+    @using (Html.BeginForm("Login", "Home"))
+    {
+        if (@ViewBag.ErrorStatus != null)
+        {
+            <h4>Login error</h4>
+            <blockquote>@ViewBag.ErrorStatus</blockquote><br />
+        }
+
+        <div class="row uniform">
+            <div class="6u$ 12u$(xsmall)" align="center">
+                @Html.TextBoxFor(x => x.UserID, new { value = "", placeholder = "Tài khoản id" })
+
+                @Html.ValidationMessageFor(x => x.UserID)
+                <br />
+                @Html.PasswordFor(x => x.password, new { value = "", placeholder = "Mật khẩu" })
+
+                @Html.ValidationMessageFor(x => x.password)
+
+            </div>
+            <div class="12u$">
+                <ul class="actions">
+                    <li><input type="submit" value="Login" /></li>
+                    <li><input type="reset" value="Reset" /></li>
+                </ul>
+            </div>
+        </div>
+    }
+
+</article>

@@ -1,0 +1,106 @@
+﻿@model ReportSubmission.Models.InfoViewModel
+
+@{
+    ViewBag.Title = "userInfo";
+    Layout = "~/_LayoutHome.cshtml";
+}
+
+@section title {
+   Thông tin
+}
+@section menu{
+}
+
+<article class="post">
+    <header>
+        <div class="title">
+            <h2><a href="#">Thông tin</a></h2>
+
+        </div>
+        <div class="meta">
+            <time class="published" datetime="2017-10-18">October 18, 2017</time>
+            <a href="/Home/userInfo" class="author">
+                @if (Session["user_name]"] != null)
+                {
+                    <span class="name">
+                        @Html.Raw(Session["user_name"].ToString())
+                    </span>
+                }
+                else
+                {
+                    <span class="name">Jane Doe</span>
+                }
+
+                <img src="/images/avatar.jpg" alt="" />
+            </a>
+        </div>
+    </header>
+
+
+
+    <div class="row uniform">
+        <div class="6u$ 12u$(xsmall)">
+
+            <div class="display-label">
+                @Html.LabelFor(model => model.name)
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.name)
+            </div>
+
+            <div class="display-label">
+                @Html.LabelFor(model => model.userID)
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.userID)
+            </div>
+
+            <div class="display-label">
+                @Html.LabelFor(model => model.ngaysinh)
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.ngaysinh)
+            </div>
+
+            <div class="display-label">
+                @Html.LabelFor(model => model.gioitinh)
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.gioitinh)
+            </div>
+
+            <div class="display-label">
+                @Html.LabelFor(model => model.SDT)
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.SDT)
+            </div>
+
+            <div class="display-label">
+                @Html.LabelFor(model => model.DiaChi)
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.DiaChi)
+            </div>
+
+            <div class="display-label">
+                @Html.LabelFor(model => model.mail)
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.mail)
+            </div>
+
+            <div class="display-label">
+                @Html.LabelFor(model => model.tk_nganhang)
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.tk_nganhang)
+            </div>
+
+            <p>
+                @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+                @Html.ActionLink("Back to List", "Index")
+            </p>
+        </div>
+    </div>
+</article>
