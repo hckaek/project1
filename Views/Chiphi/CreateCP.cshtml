@@ -1,0 +1,83 @@
+﻿@model ReportSubmission.Models.CreateCpViewModel
+
+@{
+    ViewBag.Title = "CreateCP";
+    Layout = "~/_LayoutHome.cshtml";
+}
+@section title{
+    Tạo chi phí
+}
+@section menu{
+
+}
+
+<article class="post">
+    <header>
+        <div class="title">
+            <h2><a href="#">TẠO CHI PHÍ</a></h2>
+        </div>
+        <div class="meta">
+            <time class="published" datetime="2017-10-18">October 18, 2017</time>
+            <a href="/Home/userInfo" class="author">
+                @if (Session["user_name]"] != null)
+                {
+                    <span class="name">
+                        @Html.Raw(Session["user_name"].ToString())
+                    </span>
+                }
+                else
+                {
+                    <span class="name">Jane Doe</span>
+                }
+
+                <img src="/images/avatar.jpg" alt="" />
+            </a>
+        </div>
+    </header>
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <div class="row uniform">
+            <div class="6u$ 12u$(xsmall)">
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.tenCP)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.tenCP)
+                    @Html.ValidationMessageFor(model => model.tenCP)
+                </div>
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.tien)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.tien)
+                    @Html.ValidationMessageFor(model => model.tien)
+                </div>
+
+
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.mota)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.mota)
+                    @Html.ValidationMessageFor(model => model.mota)
+                </div>
+
+                <p>
+                    <input type="submit" value="Create" />
+                </p>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</article>

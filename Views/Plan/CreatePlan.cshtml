@@ -1,0 +1,113 @@
+﻿@model ReportSubmission.Models.CreatePlanViewModel
+@{
+    ViewBag.Title = "CreatePlan";
+    Layout = "~/_LayoutHome.cshtml";
+}
+@section title{
+    Tạo kế hoạch
+}
+
+@section menu{
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <article class="post">
+        <header>
+            <div class="title">
+                <h2><a href="#"> Tạo kế hoạch</a></h2>
+            </div>
+            <div class="meta">
+                <time class="published" datetime="2017-10-18">October 18, 2017</time>
+                <a href="/Home/userInfo" class="author">
+                    @if (Session["user_name]"] != null)
+                {
+                        <span class="name">
+                            @Html.Raw(Session["user_name"].ToString())
+                        </span>
+                    }
+                    else
+                    {
+                        <span class="name">Jane Doe</span>
+                    }
+
+                    <img src="/images/avatar.jpg" alt="" />
+                </a>
+            </div>
+        </header>
+
+        <div class="row uniform">
+            <div class="6u$ 12u$(xsmall)">
+                <div class="editor-label">
+                    @Html.Label("Người tham gia")
+                </div>
+                <div class="editor-field">
+
+
+                    @Html.ListBoxFor(abc => abc.userIDs, Model.tgs, htmlAttributes: new { })
+                    @Html.ValidationMessageFor(model => model.userIDs)
+                </div>
+
+
+                <div class="editor-label">
+                    @Html.Label("Danh sách chi phí dự kiến")
+                </div>
+                <div class="editor-field">
+                    @Html.ListBoxFor(i => i.chiphiDkIDs, Model.chiphiDKs, htmlAttributes: new { })
+                    @Html.ValidationMessageFor(model => model.chiphiDkIDs)
+                </div>
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.DuanID)
+                </div>
+                <div class="editor-field">
+                    @Html.DropDownList("duanID", null, htmlAttributes: new { })
+                    @Html.ValidationMessageFor(model => model.DuanID)
+                </div>
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.Diadiem)
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(model => model.Diadiem)
+                    @Html.ValidationMessageFor(model => model.Diadiem)
+                </div>
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.NgayBD)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.NgayBD)
+                    @Html.ValidationMessageFor(model => model.NgayBD)
+                </div>
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.NgayKT)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.NgayKT)
+                    @Html.ValidationMessageFor(model => model.NgayKT)
+                </div>
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.MucCPtamUng)
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(model => model.MucCPtamUng)
+                    @Html.ValidationMessageFor(model => model.MucCPtamUng)
+                </div>
+            </div>
+        </div>
+        <br />
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </article>
+
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

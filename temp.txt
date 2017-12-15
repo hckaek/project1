@@ -1,0 +1,44 @@
+﻿ // du an
+		[Required]
+        [StringLength(50)]
+        [Display(Name = "Tên dự án")]
+        public string tenDA { get; set; }
+
+
+        [Display(Name = "Ngày bắt đầu")]
+        [DataType(DataType.Date)]
+        public DateTime? ngayBD { get; set; }
+
+        [Display(Name = "Ngày kết thúc")]
+        [DataType(DataType.Date)]
+        public DateTime? ngayKT { get; set; }
+
+        [Display(Name = "Người quản lý")]
+        public int userID { get; set; }
+
+
+
+// ke hoach		
+        [Required]
+        [StringLength(50)]
+        [Display(Name = "Địa điểm")]
+        public string diadiem { get; set; }
+
+        [DataType(DataType.Date)]
+        [Display(Name = "Ngày bắt đầu")]
+        public DateTime ngayBD { get; set; }
+
+        [DataType(DataType.Date)]
+        [Display(Name = "Ngày kết thúc")]
+        public DateTime ngayKT { get; set; }
+
+        public int trangthai { get; set; }
+        [Display(Name = "Mức chi phí tạm ứng")]
+        public int mucCPtamUng { get; set; }
+
+// user
+		[Required(ErrorMessage = "Please enter your name")]
+        //[RegularExpression("[1-9]+(\\@.+\\..+)?",ErrorMessage = "Please enter a valid user account")]
+        public int userId { get; set; }
+        [Required(ErrorMessage = "Please enter your password")]
+        public string password { get; set; }

@@ -1,0 +1,110 @@
+﻿@model IEnumerable<ReportSubmission.Models.PlanViewModel>
+
+@{
+    ViewBag.Title = "Plan";
+    Layout = "~/_LayoutHome.cshtml";
+
+}
+
+@section menu{
+    }
+@section title{
+Danh sách kế hoạch đang tham gia
+}
+
+<article class="post">
+    <header>
+        <div class="title">
+            <h2><a href="#">Danh sách kế hoạch đang tham gia</a></h2>
+        </div>
+        <div class="meta">
+            <time class="published" datetime="2017-10-18">October 18, 2017</time>
+            <a href="/Home/userInfo" class="author">
+                @if (Session["user_name]"] != null)
+                {
+                    <span class="name">
+                        @Html.Raw(Session["user_name"].ToString())
+                    </span>
+                }
+                else
+                {
+                    <span class="name">Jane Doe</span>
+                }
+
+                <img src="/images/avatar.jpg" alt="" />
+            </a>
+        </div>
+    </header>
+    <table>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.kehoachID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TenDA)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DiaDiem)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.duanID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TongCPDK)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Trangthai)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NgayBD)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NgayKT)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MucCpTU)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.kehoachID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenDA)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DiaDiem)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.duanID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TongCPDK)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Trangthai)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NgayBD)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NgayKT)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MucCpTU)
+                </td>
+                <td>
+
+                    <button type="submit" name="Duyệt kế hoạch">Duyệt </button>
+                    <button type="submit" name="Hủy kế hoạch">Hủy </button>
+                    <button type="submit" name="Xem kế hoạch">Xem </button>
+                </td>
+            </tr>
+        }
+
+    </table>
+</article>

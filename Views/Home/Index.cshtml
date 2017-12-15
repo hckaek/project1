@@ -1,0 +1,86 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/_LayoutHome.cshtml";
+}
+
+@section Title{
+    Hệ thống quản lý đi công tác
+}
+
+@section Menu{
+        <section id="menu">
+
+                <section>
+                        <input type="text" name="query" placeholder="Search" />
+                </section>
+
+                <section>
+                    <ul class="links">
+                        <li>
+                            <a href="/Home/Login">
+                                <h3>Login</h3>
+                                <p>Đăng nhập hệ thống</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <h3>Budget</h3>
+                                <p>Đăng nhập để thực hiện</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <h3>Broadcasting</h3>
+                                <p>Đăng nhập để thực hiện</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <h3>Advertisment</h3>
+                                <p>Đăng nhập để thực hiện</p>
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+        </section> 
+}
+<!-- Post -->
+
+<article class="post">
+    <header>
+        <div class="title">
+            <h2><a href="#">INTRODUCTION</a></h2>
+            <p>Giới thiệu về hệ thống</p>
+        </div>
+        <div class="meta">
+            <time class="published" datetime="2015-11-01">@String.Format("{0:ddd, MMMM d, yyyy}", System.DateTime.Now)  </time>
+            <a href="#" class="author"><span class="name">Jane Doe</span><img src="images/avatar.jpg" alt="" /></a>
+        </div>
+    </header>
+    <p></p>
+    <h4></h4>
+    <blockquote></blockquote>
+    <div class="row uniform">
+        <div class="12u$(medium)">
+            <ul>
+                <li>Cho phép người dùng không phải cài đặt thêm phần mềm nào để tích hợp dữ liệu nào trên máy tính của mình</li>
+                <li>Người dùng có thể sử dụng bất kỳ thiết bị nào khác ngoài máy tính như Ipad, Iphone có khả năng sử dụng trình duyệt web và kết nối mạng</li>
+                <li>Người dùng có thể truy cập từ xa, bất kỳ đâu chỉ cần có kết nối mạng. Người dùng khi phải đi công tác, không thể sử dụng hệ thống mạng cục bộ, nên nếu dùng giải pháp cho phép người dùng upload file lên một thư mục là không khả thi.</li>
+                <li>Tăng cường bảo mật hệ thống: việc share một thư mục cho người dùng upload file lên có khả năng lây lan virus rất cao, việc xây dựng một website sẽ tránh được khả năng này.</li>
+                <li>Hệ thống có khả năng lưu được lịch sử upload file, trên cơ sở đó có thể đánh giá được ai là người cung cấp thông tin không đúng hạn làm ảnh hưởng đến quá trình tổng hợp báo cáo</li>
+                <li>Hệ thống có khả năng nhắc nhở người upload file khi sắp đến hạn cuối cùng phải nộp qua email.</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="#" class="button big">Statistics</a></li>
+        </ul>
+        <ul class="stats">
+            <li><a href="#">General</a></li>
+            <li><a href="#" class="icon fa-heart">28</a></li>
+            <li><a href="#" class="icon fa-comment">128</a></li>
+        </ul>
+    </footer>
+</article>
